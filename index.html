@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#0b0f24" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Hollowspire</title>
+  </head>
+  <body>
+    <canvas id="stage"></canvas>
+    <canvas id="trail"></canvas>
+    <div id="vignette"></div>
+    <div id="touch"></div>
+
+    <div id="hud" hidden>
+      <div class="hud-tl">
+        <div class="plabel"><span id="p-level">Lv 1</span><span id="p-hp-text"></span></div>
+        <div class="bar hp"><i id="p-hp"></i></div>
+        <div class="bar guard"><i id="p-guard"></i></div>
+      </div>
+      <div class="hud-tc">
+        <div id="e-name"></div>
+        <div class="bar ehp"><i id="e-hp-lag"></i><i id="e-hp"></i></div>
+        <div id="e-phase"></div>
+      </div>
+      <div class="hud-tr">
+        <span id="gold" class="gold"></span>
+        <button id="btn-pause" class="icon-btn" aria-label="Pause">II</button>
+      </div>
+
+      <div id="tell" hidden>
+        <svg id="tell-ring" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="target" cx="50" cy="50" r="22" />
+          <circle class="closing" cx="50" cy="50" r="46" />
+          <g id="tell-shape"></g>
+        </svg>
+        <div id="tell-label"></div>
+      </div>
+      <div id="tell-arrow" hidden></div>
+
+      <div id="prompt"></div>
+      <div id="combo"></div>
+      <div id="banner"></div>
+      <div id="floaters"></div>
+      <div id="hint"></div>
+
+      <div id="dodge-band">
+        <button class="chev left" data-dodge="left" aria-label="Dodge left">&#x2039;&#x2039;</button>
+        <span>swipe here to dodge</span>
+        <button class="chev right" data-dodge="right" aria-label="Dodge right">&#x203A;&#x203A;</button>
+      </div>
+      <button id="btn-block" aria-label="Block (hold)">
+        <svg viewBox="0 0 40 46"><path d="M20 2 L37 8 V22 C37 33 29 40 20 44 C11 40 3 33 3 22 V8 Z" /></svg>
+      </button>
+      <button id="btn-tonic" aria-label="Drink Tonic"><span>Tonic</span><b id="tonic-count">1</b></button>
+      <button id="btn-soul" aria-label="Soul Burst">
+        <svg viewBox="0 0 100 100">
+          <circle class="bg" cx="50" cy="50" r="42" />
+          <circle id="soul-fill" class="fill" cx="50" cy="50" r="42" />
+        </svg>
+        <span>Soul</span>
+      </button>
+    </div>
+
+    <div id="screen"></div>
+    <div id="rotate"><div><b>Turn your device sideways</b><br />Hollowspire is played in landscape.</div></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

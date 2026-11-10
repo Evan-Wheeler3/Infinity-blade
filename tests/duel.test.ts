@@ -122,11 +122,11 @@ describe('Duel: defence', () => {
 
   it('a parried projectile is sent back and hurts the shooter', () => {
     const d = new Duel(GATE_ARCHER, player(), 3);
-    for (let i = 0; i < 20000 && d.currentStrike?.kind !== 'projectile'; i++) {
+    const isProjectile = () => d.currentStrike?.kind === 'projectile';
+    for (let i = 0; i < 20000 && !isProjectile(); i++) {
       d.update(DT);
-      if (d.currentStrike && d.currentStrike.kind !== 'projectile' && d.timeToImpact < 0.1) {
-        d.swipe(d.currentStrike.from as 'left');
-      }
+      const s = d.currentStrike;
+      if (s && s.kind !== 'projectile' && d.timeToImpact < 0.1) d.swipe(s.from as 'left');
     }
     untilImpactIn(d, 0.1);
     const before = d.enemyHp;
@@ -221,6 +221,7 @@ describe('Duel: enemies and outcome', () => {
     expect(d.outcome).toBe('defeat');
     const e = d.events.find((x) => x.type === 'defeat');
     expect(e && e.type === 'defeat' && e.killedBy).toBeTruthy();
+    expect(d.killedBy?.attack).toBeTruthy();
   });
 
   it('a bot that parries well beats every Tier I enemy with starter gear', () => {

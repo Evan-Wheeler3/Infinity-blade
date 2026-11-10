@@ -105,6 +105,8 @@ export class Duel {
   outcome: 'pending' | 'victory' | 'defeat' = 'pending';
   /** Damage taken this duel (a no-damage win reveals the secret door). */
   damageTaken = 0;
+  /** The strike that ended the duel, for the death screen. */
+  killedBy: { strike: StrikeDef; attack: string } | null = null;
 
   private readonly rng: Rng;
 
@@ -457,7 +459,8 @@ export class Duel {
         return;
       }
       this.outcome = 'defeat';
-      this.events.push({ type: 'defeat', killedBy: strike, attack: this.attack?.name ?? '' });
+      this.killedBy = { strike, attack: this.attack?.name ?? '' };
+      this.events.push({ type: 'defeat', killedBy: strike, attack: this.killedBy.attack });
     }
   }
 

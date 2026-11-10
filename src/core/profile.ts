@@ -18,6 +18,8 @@ export interface ClimbState {
   secondWind: boolean;
   /** A no-damage duel revealed the secret door on the next floor. */
   secretRevealed: boolean;
+  /** Only one secret door per tier. */
+  secretFound: boolean;
 }
 
 export interface Settings {

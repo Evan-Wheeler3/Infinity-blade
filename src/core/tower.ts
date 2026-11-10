@@ -43,6 +43,7 @@ export function newClimb(p: Profile, seed: number): ClimbState {
     tonics: p.tonicMax,
     secondWind: false,
     secretRevealed: false,
+    secretFound: false,
   };
 }
 
